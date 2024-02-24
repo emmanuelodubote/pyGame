@@ -1,6 +1,7 @@
 myVenv/
 
 *.bmp
+.ds_store
 
 
 
