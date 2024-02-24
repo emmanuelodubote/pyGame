@@ -20,6 +20,7 @@ class AlienInvasion:
 
         # self.screen = pygame.display.set_mode((1200, 800))  #-----Surface
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))  #-----Surface
+        
         pygame.display.set_caption("Alien Invasion")
         
         
@@ -45,7 +46,7 @@ class AlienInvasion:
 
 if __name__ == '__main__':                              #--------???
         # Make a game instance, and run the game.
-        ai = AlienInvasion().run_game()
+        ai = AlienInvasion()
         ai.run_game()
 
 
