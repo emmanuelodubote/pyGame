@@ -31,6 +31,8 @@ class AlienInvasion:
 
         self.ship = Ship(self)                            #------self is AlienInvasion, the game
         
+        self.bullets = pygame.sprite.Group()            #----called a group rather than an attribute, why??
+
         # # Set the background color.
         # self.bg_color = (230, 230, 230)
 
@@ -48,6 +50,7 @@ class AlienInvasion:
 
             self._check_events()                            #-----3 above
             self.ship.update()
+            self.bullets.update()
             self._update_screen()                                        #-----4 below (all 5lines)
             
 
@@ -98,6 +101,8 @@ class AlienInvasion:
             self.ship.moving_right = True
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = True
+        # elif event.key == pygame.K_UP:
+        #     self.ship.moving_up = True
         elif event.key == pygame.K_q:
             sys.exit()
 
@@ -109,6 +114,8 @@ class AlienInvasion:
             self.ship.moving_right = False
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = False
+        # elif event.key == pygame.K_UP:
+        #     self.ship.moving_up = False
 
 
     def _update_screen(self):                                            #-----4 above (all 5lines)

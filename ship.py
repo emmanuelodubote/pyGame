@@ -29,6 +29,7 @@ class Ship:
         # Movement flag
         self.moving_right = False
         self.moving_left = False
+        self.moving_up = False
 
 
     def blitme(self):
@@ -52,7 +53,10 @@ class Ship:
             # self.rect.x -= 1          #------ 1 below
 
             self.x -= self.settings.ship_speed          #------ 1 above
-
+       
+        # if self.moving_up:
+        #     self.rect.y -= 1
+       
         # Update rect object from self.x
         self.rect.x = self.x
 
