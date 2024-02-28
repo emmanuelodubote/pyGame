@@ -12,6 +12,7 @@ class Ship:
 
         self.screen = ai_game.screen
         self.screen_rect = ai_game.screen.get_rect()
+        self.settings = ai_game.settings
 
 
         # Load the ship image and get its rect.
@@ -20,7 +21,10 @@ class Ship:
         self.rect = self.image.get_rect()
 
         # Start each new ship at the bottom center of the screen.
-        self.rect.midbottom = self.screen_rect.midbottom
+        self.rect.midbottom = self.screen_rect.midbottom        #----?? midbottom mtd? why no ()
+
+        # Store a decimal value for the ship's horizontal position.
+        self.x = float(self.rect.x)
 
         # Movement flag
         self.moving_right = False
@@ -37,10 +41,19 @@ class Ship:
         """Update the ship's position based on the movement flag"""
 
         if self.moving_right:
-            self.rect.x += 1
+            # self.rect.x += 1          #------ 1 below
+
+            # Update the ship's x value, not the rect.      
+            self.x += self.settings.ship_speed          #------ 1 above
 
         if self.moving_left:
-            self.rect.x -= 1
+            # self.rect.x -= 1          #------ 1 below
+
+            self.x -= self.settings.ship_speed          #------ 1 above
+
+        # Update rect object from self.x
+        self.rect.x = self.x
+
 
 
 
