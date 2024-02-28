@@ -64,23 +64,43 @@ class AlienInvasion:
                 sys.exit()
 
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RIGHT:
+                # if event.key == pygame.K_RIGHT:           #---- 6 below (all 6lines)
 
-                    # # Move the ship to the right      #--------5 below
-                    # self.ship.rect.x += 1
+                #     # # Move the ship to the right      #--------5 below
+                #     # self.ship.rect.x += 1
 
-                    self.ship.moving_right = True       #--------5 above
+                #     self.ship.moving_right = True       #--------5 above
+                
+                # elif event.key == pygame.K_LEFT:
+                #     self.ship.moving_left = True
 
-                elif event.key == pygame.K_LEFT:
-                    self.ship.moving_left = True
-
+                self._check_keydown_events(event)           #---- 6 above & below
 
             elif event.type == pygame.KEYUP:        #----??
-                if event.key == pygame.K_RIGHT:
-                    self.ship.moving_right = False
+                # if event.key == pygame.K_RIGHT:           #---- 6 below (all 4lines)
+                #     self.ship.moving_right = False
 
-                elif event.key == pygame.K_LEFT:
-                    self.ship.moving_left = False
+                # elif event.key == pygame.K_LEFT:
+                #     self.ship.moving_left = False
+                
+                self._check_keyup_events(event)             #---- 6 above & below
+
+
+    def _check_keydown_events(self, event):                 #---- 6 above
+        """Respond to keypresses."""
+
+        if event.key == pygame.K_RIGHT:
+            self.ship.moving_right = True
+        elif event.key == pygame.K_LEFT:
+            self.ship.moving_left = True
+
+    def _check_keyup_events(self, event):                    #---- 6 above
+        """Respond to key releases."""
+
+        if event.key == pygame.K_RIGHT:
+            self.ship.moving_right = False
+        elif event.key == pygame.K_LEFT:
+            self.ship.moving_left = False
 
 
     def _update_screen(self):                                            #-----4 above (all 5lines)
