@@ -5,6 +5,7 @@ import pygame
 # import settings                                    #------1 below
 from settings import Settings
 from ship import Ship
+from bullet import Bullet
 
 
 class AlienInvasion:
@@ -50,7 +51,7 @@ class AlienInvasion:
 
             self._check_events()                            #-----3 above
             self.ship.update()
-            self.bullets.update()
+            self.bullets.update()               #----calls for each bullet we place in the bullet group above
             self._update_screen()                                        #-----4 below (all 5lines)
             
 
@@ -105,6 +106,8 @@ class AlienInvasion:
         #     self.ship.moving_up = True
         elif event.key == pygame.K_q:
             sys.exit()
+        elif event.key == pygame.K_SPACE:
+            self._fire_bullet()
 
 
     def _check_keyup_events(self, event):                    #---- 6 above
@@ -124,9 +127,15 @@ class AlienInvasion:
         self.screen.fill(self.settings.bg_color)
         self.ship.blitme()
 
+        for bullet in self.bullets.sprites():       #------FOR statement, why?
+            bullet.draw_bullet()
+
         pygame.display.flip()
 
-
+    def _fire_bullet(self):
+        """Create a new bullet and add it to the bullets group."""
+        new_bullet = Bullet(self)               #----instance of a bullet
+        self.bullets.add(new_bullet)            #----adding to bullet group with add() mtd (similar to append)
 
 
 if __name__ == '__main__':                           #--------???
