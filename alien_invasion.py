@@ -6,6 +6,7 @@ import pygame
 from settings import Settings
 from ship import Ship
 from bullet import Bullet
+from alien import Alien
 
 
 class AlienInvasion:
@@ -33,6 +34,9 @@ class AlienInvasion:
         self.ship = Ship(self)                            #------self is AlienInvasion, the game
         
         self.bullets = pygame.sprite.Group()            #----called a group rather than an attribute, why??
+        self.aliens = pygame.sprite.Group()
+
+        self._create_fleet()
 
         # # Set the background color.
         # self.bg_color = (230, 230, 230)
@@ -139,7 +143,10 @@ class AlienInvasion:
         for bullet in self.bullets.sprites():       #------FOR statement, why?
             bullet.draw_bullet()
 
+        self.aliens.draw(self.screen)
+        
         pygame.display.flip()
+
 
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group."""
@@ -151,7 +158,7 @@ class AlienInvasion:
 
     def _update_bullets(self):
         """Update position of bullets and get rid of old bullets."""
-        
+
         # Update bullet positions
         self.bullets.update()
 
@@ -159,6 +166,15 @@ class AlienInvasion:
         for bullet in self.bullets.copy():
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
+
+
+    def _create_fleet(self):                        #---similar to fire bullet above
+        """Create the fleet of aliens."""
+
+        # Make an alien.
+        alien = Alien(self)
+        self.aliens.add(alien)
+
 
 
 if __name__ == '__main__':                           #--------???
