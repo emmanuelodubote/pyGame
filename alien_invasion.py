@@ -51,12 +51,13 @@ class AlienInvasion:
 
             self._check_events()                            #-----3 above
             self.ship.update()
-            self.bullets.update()               #----calls for each bullet we place in the bullet group above
-            
-            # Get rid of bullets that have disappeared
-            for bullet in self.bullets.copy():      #----??
-                if bullet.rect.bottom <= 0:
-                    self.bullets.remove(bullet)
+            # self.bullets.update()               #----calls for each bullet we place in the bullet group above
+            self._update_bullets()
+
+            # # Get rid of bullets that have disappeared
+            # for bullet in self.bullets.copy():      #----??
+            #     if bullet.rect.bottom <= 0:
+            #         self.bullets.remove(bullet)
 
             # print(len(self.bullets))
 
@@ -146,6 +147,18 @@ class AlienInvasion:
         if len(self.bullets) < self.settings.bullets_allowed:
             new_bullet = Bullet(self)               #----instance of a bullet
             self.bullets.add(new_bullet)            #----adding to bullet group with add() mtd (similar to append)
+
+
+    def _update_bullets(self):
+        """Update position of bullets and get rid of old bullets."""
+        
+        # Update bullet positions
+        self.bullets.update()
+
+        # Get rid of bullets that have disappeared
+        for bullet in self.bullets.copy():
+            if bullet.rect.bottom <= 0:
+                self.bullets.remove(bullet)
 
 
 if __name__ == '__main__':                           #--------???
