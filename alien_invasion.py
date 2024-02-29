@@ -20,10 +20,10 @@ class AlienInvasion:
         # self.settings = settings.Settings()       #------1 above
         self.settings = Settings()
 
-        # self.screen = pygame.display.set_mode((1200, 800))                                              #-----2 below Surface (Setting.py Class)
-        # self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))  #-----2 above Surface (Setting.py Class)       #------7 below
+        self.screen = pygame.display.set_mode((1200, 800))                                              #-----2 below Surface (Setting.py Class)
+        self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))  #-----2 above Surface (Setting.py Class)       #------7 below
         
-        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)                                                                                 #------7 above (all 3 lines)
+        # self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)                                                                                 #------7 above (all 3 lines)
         self.settings.screen_width = self.screen.get_rect().width
         self.settings.screen_height = self.screen.get_rect().height
         
@@ -52,6 +52,14 @@ class AlienInvasion:
             self._check_events()                            #-----3 above
             self.ship.update()
             self.bullets.update()               #----calls for each bullet we place in the bullet group above
+            
+            # Get rid of bullets that have disappeared
+            for bullet in self.bullets.copy():      #----??
+                if bullet.rect.bottom <= 0:
+                    self.bullets.remove(bullet)
+
+            # print(len(self.bullets))
+
             self._update_screen()                                        #-----4 below (all 5lines)
             
 
