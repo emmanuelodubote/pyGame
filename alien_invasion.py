@@ -65,6 +65,7 @@ class AlienInvasion:
 
             # print(len(self.bullets))
 
+            self._update_aliens()
             self._update_screen()                                        #-----4 below (all 5lines)
             
 
@@ -222,7 +223,7 @@ class AlienInvasion:
 
 
     def _create_alien(self, alien_number, row_number):
-        
+
     # def _create_alien(self, alien_number):
         # Create an alien and place it in the row
         alien = Alien(self)
@@ -238,6 +239,10 @@ class AlienInvasion:
         
         self.aliens.add(alien)
 
+    def _update_aliens(self):
+        """Update the positions of all aliens in the fleet."""
+
+        self.aliens.update()
 
 
 if __name__ == '__main__':                           #--------???
