@@ -142,8 +142,10 @@ class AlienInvasion:
 
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group."""
-        new_bullet = Bullet(self)               #----instance of a bullet
-        self.bullets.add(new_bullet)            #----adding to bullet group with add() mtd (similar to append)
+
+        if len(self.bullets) < self.settings.bullets_allowed:
+            new_bullet = Bullet(self)               #----instance of a bullet
+            self.bullets.add(new_bullet)            #----adding to bullet group with add() mtd (similar to append)
 
 
 if __name__ == '__main__':                           #--------???
