@@ -59,18 +59,21 @@ class AlienInvasion:
 
 
             self._check_events()                            #-----3 above
-            self.ship.update()
-            # self.bullets.update()               #----calls for each bullet we place in the bullet group above
-            self._update_bullets()
+            
+            if self.stats.game_active:
+                self.ship.update()
+                # self.bullets.update()               #----calls for each bullet we place in the bullet group above
+                self._update_bullets()
 
-            # # Get rid of bullets that have disappeared
-            # for bullet in self.bullets.copy():      #----??
-            #     if bullet.rect.bottom <= 0:
-            #         self.bullets.remove(bullet)
+                # # Get rid of bullets that have disappeared
+                # for bullet in self.bullets.copy():      #----??
+                #     if bullet.rect.bottom <= 0:
+                #         self.bullets.remove(bullet)
 
-            # print(len(self.bullets))
+                # print(len(self.bullets))
 
-            self._update_aliens()
+                self._update_aliens()
+
             self._update_screen()                                        #-----4 below (all 5lines)
             
 
