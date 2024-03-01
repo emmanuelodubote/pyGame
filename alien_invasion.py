@@ -159,6 +159,9 @@ class AlienInvasion:
 
         if button_clicked and not self.stats.game_active:
 
+            # Reset the game settings.
+            self.settings.initialize_dynamic_settings()
+
             # Hide the mouse cursor.
             pygame.mouse.set_visible(False)
 
@@ -173,6 +176,7 @@ class AlienInvasion:
             # Create a new fleet and center the ship.
             self._create_fleet()
             self.ship.center_ship()
+
 
     def _update_screen(self):                                            #-----4 above (all 5lines)
         """Update images on the screen, and flip to the new screen."""
