@@ -158,6 +158,10 @@ class AlienInvasion:
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
 
         if button_clicked and not self.stats.game_active:
+
+            # Hide the mouse cursor.
+            pygame.mouse.set_visible(False)
+
             # Reset the game statistics.
             self.stats.reset_stats()
             self.stats.game_active = True
@@ -354,6 +358,7 @@ class AlienInvasion:
 
         else:
             self.stats.game_active = False
+            pygame.mouse.set_visible(True)
 
 
 if __name__ == '__main__':                           #--------???
