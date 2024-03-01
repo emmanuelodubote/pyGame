@@ -213,6 +213,7 @@ class AlienInvasion:
         
         self._check_bullet_alien_collisions()
 
+
     def _check_bullet_alien_collisions(self):
         """Respond to bullet-alien collisions."""
 
@@ -223,7 +224,7 @@ class AlienInvasion:
             # Destroy existing bullets and create new fleet
             self.bullets.empty()
             self._create_fleet()
-
+            self.settings.increase_speed()
 
     # def _create_fleet(self):                        #---similar to fire bullet above
     #     """Create the fleet of aliens."""
@@ -295,6 +296,7 @@ class AlienInvasion:
         
         self.aliens.add(alien)
 
+
     def _update_aliens(self):
         """Update the positions of all aliens in the fleet."""
 
@@ -308,6 +310,7 @@ class AlienInvasion:
 
         # Look for aliens hitting the bottom of the screen.    
         self._check_aliens_bottom()    
+
 
     def _check_aliens_bottom(self):
         """Check if any aliens have reached the bottom of the screen."""
